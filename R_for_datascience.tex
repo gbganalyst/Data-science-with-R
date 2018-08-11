@@ -1,0 +1,1150 @@
+\documentclass[ignorenonframetext,]{beamer}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+\usetheme[]{Copenhagen}
+\usecolortheme{dolphin}
+\usefonttheme{structurebold}
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\newif\ifbibliography
+\hypersetup{
+            pdftitle={Data Science with R},
+            pdfauthor={Ogundepo Ezekiel Adebayo},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+
+\AtBeginPart{
+  \let\insertpartnumber\relax
+  \let\partname\relax
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \let\insertsectionnumber\relax
+    \let\sectionname\relax
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \let\insertsubsectionnumber\relax
+  \let\subsectionname\relax
+  \frame{\subsectionpage}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+\title{Data Science with R}
+\subtitle{A continuous training session}
+\author{Ogundepo Ezekiel Adebayo}
+\date{11 August, 2018}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}
+
+\begin{center}
+\textbf{Relax, programming is cool!}
+\end{center}
+
+If you doubt me, please kindly ask Hadley Wickham, the Chief data
+scientist at R studio.
+
+\end{frame}
+
+\begin{frame}{R for Data Science}
+
+Data science is an exciting discipline that allows you to turn raw data
+into understanding, insight, and knowledge \cite{P}. The goal of R for
+Data Science is to help you learn the most important tools in R that
+will allow you to do data science. Data science is a huge field, and
+there's no way you can master it by reading a single book \cite{P}.
+
+\end{frame}
+
+\begin{frame}{What you will learn}
+
+\begin{figure}
+\centering
+\includegraphics{C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/Capture.JPG}
+\caption{Program \textasciitilde{} Inspired by Hadley Wickham \cite{P}}
+\end{figure}
+
+\begin{block}{R and R Studio}
+
+R is a statistical programming language for data analysis and
+visualization while R Studio is an integrated development environment
+(IDE) for R programming. R Studio makes programming easier in R.
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{R worth it}
+
+\begin{figure}
+\centering
+\includegraphics{C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/r_ladies.JPG}
+\caption{R worth it}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Introduction to R}
+
+In this chapter, you will take your first steps with R. You will learn
+how to use the console as a calculator and how to assign variables. You
+will also get to know the basic data types in R. Let's get started!
+
+\end{frame}
+
+\begin{frame}{Welcome to R programming}
+
+\begin{figure}
+\centering
+\includegraphics{C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/R_studio.jpg}
+\caption{R interface}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}[fragile]{R as a calculator}
+
+In its most basic form, R can be used as a simple calculator. Consider
+the following arithmetic operations:
+
+\begin{itemize}
+\tightlist
+\item
+  Addition :
+\item
+  Subtraction :
+\item
+  Multiplication :
+\item
+  Division :
+\item
+  Exponentiation:
+\item
+  Modulo :
+\end{itemize}
+
+Calculate \(6 + 12\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{6}\OperatorTok{+}\DecValTok{12}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 18
+\end{verbatim}
+
+Calculate \(800-900\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{800}\OperatorTok{-}\DecValTok{900}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -100
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{R as a calculator}
+
+Calculate \(4\times 5\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4}\OperatorTok{*}\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 20
+\end{verbatim}
+
+Calculate \(\frac{2018}{2}\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2018}\OperatorTok{/}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1009
+\end{verbatim}
+
+Calculate \(2^3\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{^}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{R as a calculator}
+
+Calculate \(20\%\%3\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{20}\OperatorTok{%%}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+Calculate the square root of \(\sqrt{4}\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+Calculate \((\sqrt{4})^2\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{4}\NormalTok{))}\OperatorTok{^}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{Comment in R}
+
+R makes use of the \# sign to add comments, so that you and others can
+understand what the R code is about. Just like Twitter! Comments are not
+run as R code, so they will not influence your result. For example, any
+code like \(\#3 + 4\) at the console is a comment. R ignores any code in
+\#, this means that the code will not run.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#3+4}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{Variable assignment}
+
+A basic concept in \textbf{statistical} programming is called a
+variable. A variable allows you to store a value (e.g.~5) or an object
+(e.g.~a function description) in R. You can then later use this
+variable's name to easily access the value or the object that is stored
+with this variable.
+
+\begin{block}{Example}
+
+Store the value of 4 as your first name
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ezekiel=}\DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
+
+To know what is stored in memory as your first name, type your first
+name in the console and press return key from the keyboard
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ezekiel}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Variable assignment and data types in R}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x=}\DecValTok{3}\NormalTok{;y=}\DecValTok{4}\NormalTok{;z=}\DecValTok{10}
+
+\NormalTok{x}\OperatorTok{+}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z}\OperatorTok{-}\NormalTok{x}\OperatorTok{-}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{*}\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z}\OperatorTok{^}\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1000
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{Naming Rules for Variables}
+
+The best naming convention is to choose a variable name that will tell
+the reader of the program what the variable represents
+
+\begin{block}{Rules for naming variables}
+
+\begin{itemize}
+\tightlist
+\item
+  All variables must begin with a letter of the alphabet.
+\item
+  After the initial letter, variable names can also contain (\_ or .)
+  and numbers. No spaces or special characters, however are allowed.
+\item
+  Uppercase characters are distinct from lowercase characters (in R and
+  also in Python)
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Example}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rll}
+  \hline
+& Samples of acceptable variable names & Uncceptable variable names \\ 
+  \hline
+1 & Grade & Grade(Test) \\ 
+  2 & GradeOnTest & GradeTest\#1 \\ 
+  3 & Gaudence\_Uwimana & Gaudence Uwimana \\ 
+  4 & sales\_annex\_2017 & 2017sales\_annex \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Basic classes of objects}
+
+R works with numerous \textbf{atomic} classes of objects. Some of the
+most basic atomic data types to get started are:
+
+\begin{itemize}
+\tightlist
+\item
+  Decimas values like 4.7 are called \textbf{numeric}
+\item
+  Natural numbers like 4 are called \textbf{integers}. Integers are also
+  numeric
+\item
+  Boolean values (\textbf{TRUE} or \textbf{FALSE}) are called
+  \textbf{logical}
+\item
+  Text (or string) values are called \textbf{characters}
+\item
+  Factors : Categorical variable where each level is a category
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Basic data structure or types}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Vector : A collection of elements of the same class
+\item
+  Matrix : All columns must uniformly contain only one variable type
+\item
+  data.frame : The columns can contain different classes
+\item
+  List : Can hold object of different classes and lenght
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Create a vector}
+
+Vectors are one-dimensional arrays that can hold numeric data, character
+data, or logical data. In R, you can create a vector with the combine
+function \textbf{c()}. You place the vector elements separate by a comma
+between the parenthesis.
+
+\begin{block}{For example}
+
+numeric\_vector \textless{}- c(1, 2, 3, 6, 7, 10)
+
+character.vector \textless{}- c(`Bosco', `Lucie', `John', `Agness',
+`Marc')
+
+\end{block}
+
+\begin{block}{Notice}
+
+Adding a space behind the commas in the \textbf{c()} function improves
+the readability of your code
+
+\end{block}
+
+\begin{block}{Naming a vector}
+
+As a data analyst, it is important to have a clear view on the dat that
+you are using. Understanding what each element refers to is essential.
+You can give a name to the elements of a vector with the
+\textbf{names ()} function
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Create a vector}
+
+\begin{block}{Example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sales_tax <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{140000}\NormalTok{, }\DecValTok{200000}\NormalTok{, }\DecValTok{600000}\NormalTok{, }\DecValTok{180000}\NormalTok{, }\DecValTok{170000}\NormalTok{ )}
+\KeywordTok{names}\NormalTok{(sales_tax) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'Monday'}\NormalTok{,}\StringTok{'Tuesday'}\NormalTok{,}\StringTok{'Wednessday'}\NormalTok{,}
+                      \StringTok{'Thursday'}\NormalTok{,}\StringTok{'Friday'}\NormalTok{)}
+\NormalTok{sales_tax}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Monday    Tuesday Wednessday   Thursday     Friday 
+##     140000     200000     600000     180000     170000
+\end{verbatim}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Arithmetic with vectors}
+
+It is important to know that if you sum two vectors in R, it takes the
+element-wise sum
+
+\begin{block}{Example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{b <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\NormalTok{c <-}\StringTok{ }\NormalTok{a }\OperatorTok{+}\StringTok{ }\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{c}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  7  9 11 13 15
+\end{verbatim}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Vector selection}
+
+To select elements of a vector (and later matrices, data frames), you
+can use square brackets {[} {]}, between the square brackets, you
+indicate what elements to select.
+
+To select the first elements of vector \textbf{a}, you type
+\textbf{a}{[}1{]}.
+
+To select the second element of the vector, you typed \textbf{a}{[}2{]},
+etc.
+
+\begin{block}{Example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a}
+\NormalTok{a[}\DecValTok{1}\NormalTok{]}
+\NormalTok{a[}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Short group work}
+
+\begin{block}{What does it do?}
+
+a{[}a\textgreater{}3{]}
+
+\end{block}
+
+\begin{block}{Create special vectors}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a=}\StringTok{ }\DecValTok{1}\OperatorTok{:}\StringTok{ }\DecValTok{10} \CommentTok{# Create sequence 1 to 10}
+\NormalTok{b=}\StringTok{ }\DecValTok{10}\OperatorTok{:}\DecValTok{1} \CommentTok{# Create sequence 10 to 1}
+\end{Highlighting}
+\end{Shaded}
+
+To create sequence with increament of 2 from 1 to 16, we can
+\textbf{seq()} function e.g.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{20}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\KeywordTok{seq}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{1}\NormalTok{, }\OperatorTok{-}\FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Create special vectors cont.}
+
+If you have a sequence value you don't know the last element, say you
+just know the start of the sequence and the length of the sequence, e.g.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DataTypeTok{by=}\DecValTok{2}\NormalTok{, }\DataTypeTok{length=}\DecValTok{50}\NormalTok{)}
+\KeywordTok{length}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DataTypeTok{by=}\DecValTok{2}\NormalTok{, }\DataTypeTok{length=}\DecValTok{50}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Repeating elements for certain number of time
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{) }\CommentTok{# Repeat 5 in 10 times}
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{) }\CommentTok{# Repeat 1 to 4 five times}
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{each=}\DecValTok{3}\NormalTok{) }\CommentTok{# Each element of 1 to 4 3 times}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{Short group work}
+
+\begin{block}{Tell what the following line of codes is or are doing}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{each=}\DecValTok{3}\NormalTok{, }\DataTypeTok{time=}\DecValTok{2}\NormalTok{)}
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{)}
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Assignment 1}
+
+\begin{figure}
+\centering
+\includegraphics{C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/assignment_Capture.JPG}
+\caption{Assignment 1}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Some fun- Using R to print out the Body Mass Index}
+
+\begin{figure}
+\centering
+\includegraphics{C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/BMI_Function.JPG}
+\caption{BMI Function}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}[fragile]{Matrices}
+
+In R, a matrix is a collection of elements of the same data type
+(numeric, character, or logical) arranged into a fixed number of rows
+and columns.
+
+Since we are only working with rows and columns, a matrix is called two
+dimensional array.
+
+You can construct a matrix in R with the \textbf{matrix ()} function.
+
+\begin{block}{Example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{9}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{3}\NormalTok{, }\DataTypeTok{byrow =}\NormalTok{ T); A}
+\NormalTok{##      [,1] [,2] [,3]}
+\NormalTok{## [1,]    1    2    3}
+\NormalTok{## [2,]    4    5    6}
+\NormalTok{## [3,]    7    8    9}
+\end{Highlighting}
+\end{Shaded}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Matrices}
+
+\begin{itemize}
+\tightlist
+\item
+  The first argument is the collection of elements that \#Rstats will
+  arrange into the rows and columns of the matrix. Here, we use 1:9
+  which is a shortcut for c(1, 2, \ldots{}, 9).
+\item
+  The arguement \textbf{byrow} indicates that the matrix is filled by
+  the rows. If we want the matrix to be filled by the columns, we just
+  place \textbf{byrow=F}
+\item
+  The argument \textbf{nrow} indicates that the matrix should have 3
+  \textbf{rows}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Short group work}
+
+Construct a matrix with 3 rows containing the numbers 1 up to 9 filled
+\textbf{column-wise}
+
+\end{frame}
+
+\begin{frame}[fragile]{Progressing from vector to matrix}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fiscal_year2016_}\DecValTok{17}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{140}\NormalTok{, }\DecValTok{134}\NormalTok{)     }
+\NormalTok{fiscal_year2017_}\DecValTok{18}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{160}\NormalTok{, }\DecValTok{158}\NormalTok{)  }
+\NormalTok{performance_analysis <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(fiscal_year2016_}\DecValTok{17}\NormalTok{,}
+\NormalTok{                        fiscal_year2017_}\DecValTok{18}\NormalTok{),}\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{, }
+                        \DataTypeTok{ncol =} \DecValTok{2}\NormalTok{,}\DataTypeTok{byrow =}\NormalTok{ T)}
+\NormalTok{performance_analysis}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]  140  134
+## [2,]  160  158
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{Naming a matrix}
+
+To help you understand what is stored in the performance analysis
+matrix, it is good to add the names of the rows and columns
+respectively. Not only does this help you to read the data, but it also
+useful to select certain elements from the matrix.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rownames}\NormalTok{(performance_analysis) <-}
+\StringTok{  }\KeywordTok{c}\NormalTok{(}\StringTok{'Fiscal year July-June 2016/17'}\NormalTok{,}
+   \StringTok{'Fiscal year July-June 2017/18'}\NormalTok{)}
+\KeywordTok{colnames}\NormalTok{(performance_analysis) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'Actual'}\NormalTok{, }\StringTok{'Target'}\NormalTok{)}
+\NormalTok{performance_analysis}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                               Actual Target
+## Fiscal year July-June 2016/17    140    134
+## Fiscal year July-June 2017/18    160    158
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{Other examples}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{17}\NormalTok{), }\DataTypeTok{ncol =} \DecValTok{3}\NormalTok{, }
+            \DataTypeTok{byrow =}\NormalTok{ F); A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    7   13
+## [2,]    3    9   15
+## [3,]    5   11   17
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{18}\NormalTok{), }\DataTypeTok{ncol =} \DecValTok{3}\NormalTok{, }
+            \DataTypeTok{byrow =}\NormalTok{ F); B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    2    8   14
+## [2,]    4   10   16
+## [3,]    6   12   18
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{Matrices selection}
+
+To select elements in a matrix we can use square brackets {[} , {]},
+between the square brackets, you indicate the position of the row and
+column in which the elements to select are.
+
+To select the element in the first row and second column of matrix
+\textbf{A}, you type \textbf{A}{[}1,2{]}.
+
+To select the element in the third row and second column of matrix
+\textbf{A}, you type \textbf{A}{[}3,2{]}, etc.
+
+\begin{block}{Example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A}
+\NormalTok{A[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{]}
+\NormalTok{A[}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Arithmetic Operation}
+
+We can perform all the arithmetic operations on matrices
+
+\begin{itemize}
+\tightlist
+\item
+  Addition
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{C <-}\StringTok{ }\NormalTok{A }\OperatorTok{+}\StringTok{ }\NormalTok{B; C}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3   15   27
+## [2,]    7   19   31
+## [3,]   11   23   35
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Subtraction
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{D <-}\StringTok{ }\NormalTok{B }\OperatorTok{-}\StringTok{ }\NormalTok{A; D}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    1    1
+## [2,]    1    1    1
+## [3,]    1    1    1
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{Arithmetic Operation}
+
+\begin{block}{Multiplication}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F <-}\StringTok{ }\NormalTok{A  }\OperatorTok{%*%}\StringTok{  }\NormalTok{B; F}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]  108  234  360
+## [2,]  132  294  456
+## [3,]  156  354  552
+\end{verbatim}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Arithmetic Operation}
+
+\begin{itemize}
+\tightlist
+\item
+  Determinant
+\end{itemize}
+
+\begin{align*}
+G=det(A)=\begin{vmatrix}
+1&7&13\\
+3&9&15\\
+5&11&17
+\end{vmatrix}\end{align*}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{G <-}\KeywordTok{det}\NormalTok{(A); G}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.263256e-14
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{Arithmetic Operation}
+
+\begin{block}{Inverse}
+
+For inverse, we use \textbf{solve()} a base function in R
+
+H \textless{}- solve(B)
+
+H
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Did you encounter a problem?}
+
+Be of good cheer; for I have overcome the world!- Jesus Christ in Joh
+16:33
+
+\end{frame}
+
+\begin{frame}[fragile]{Inverse function to tackle the problem}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{inverse <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(A)\{}
+  \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{det}\NormalTok{(A)}\OperatorTok{<}\FloatTok{0.01}\NormalTok{)}
+   \KeywordTok{cat}\NormalTok{(}\StringTok{"Since the given matrix is singular. }
+\StringTok{       Sorry, I can't find inverse"}\NormalTok{)}
+  \ControlFlowTok{else} 
+    \KeywordTok{solve}\NormalTok{(A)}
+\NormalTok{  \}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{inverse}\NormalTok{(A)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Since the given matrix is singular. 
+##        Sorry, I can't find inverse
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{Short group work}
+
+Use the function that you wrote to find the inverse of matrix J, where J
+is:
+
+\begin{align*}
+J=\begin{pmatrix}
+5& 1&    0\\
+3&   -1&    2\\
+4&    0 &  -1
+\end{pmatrix}\end{align*}
+
+\begin{block}{Note}
+
+Assign the matrix to J and call inverse(J) in \textbf{R}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Short group work}
+
+Can you also confirm it with the base function \textbf{solve(J)}?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## solve(J)}
+\end{Highlighting}
+\end{Shaded}
+
+Are they the same? Try it with this \textbf{R-code}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{## inverse(J)==solve(J)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}{System of linear equation}
+
+We can use matrix skills to solve any system of linear equations
+
+\begin{block}{Solve the following system of equations}
+
+\begin{align*}
+x-y &= 3\\
+2x +3y &= -4
+\end{align*}
+
+\end{block}
+
+\begin{block}{Matrices preparation}
+
+\begin{align*}
+A=\begin{pmatrix}
+1&-1\\
+2&3
+\end{pmatrix}\quad B=\begin{pmatrix}
+x\\
+y
+\end{pmatrix} \quad C=\begin{pmatrix}
+3\\
+-4
+\end{pmatrix}
+\end{align*}
+
+\begin{align*}
+B= A^{-1}\times C
+\end{align*}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Coding in R}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A=}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\OperatorTok{-}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{),}\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{,}\DataTypeTok{byrow =}\NormalTok{ T)}
+\NormalTok{A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1   -1
+## [2,]    2    3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{C=}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\OperatorTok{-}\DecValTok{4}\NormalTok{),}\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{, }\DataTypeTok{byrow =}\NormalTok{ T)}
+\NormalTok{C}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]
+## [1,]    3
+## [2,]   -4
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{Coding in R}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B=}\KeywordTok{solve}\NormalTok{(A)}\OperatorTok{%*%}\NormalTok{C}
+\NormalTok{B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]
+## [1,]    1
+## [2,]   -2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x =}\StringTok{ }\NormalTok{B[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]; x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y =}\StringTok{ }\NormalTok{B[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{]; y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -2
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{References}
+
+\begin{thebibliography}{99}
+\bibitem {P} 
+Wickham, H., \& Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. " O'Reilly Media, Inc.".
+\end{thebibliography}
+
+\end{frame}
+
+\end{document}
