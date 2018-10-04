@@ -15,27 +15,40 @@ output:
   # fig_width: 7
     df_print: kable
   includes:
+    #   \usepackage{amsmath}
+    #   \usepackage{hyperref}
+    #   \usepackage{float}
+    #   \usepackage{amsfonts}
+    #   \usepackage{amssymb}
+    #   \usepackage{siunitx}
+    #   \usepackage{booktabs}
+    #   \usepackage{caption}
+    #   \usepackage[backend=biber]{biblatex}
+    #   \bibliography{bibliography.bib}
     in_header:
-      \usepackage{amsmath}
-      \usepackage{hyperref}
-      \usepackage{float}
-      \usepackage{amsfonts}
-      \usepackage{amssymb}
-      \usepackage{siunitx}
-      \usepackage{booktabs}
-      \usepackage{caption}
-      \usepackage[backend=biber]{biblatex}
-      \bibliography{bibliography.bib}
+        \usepackage{verbatim}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+```{r library, include=F}
+pg=c('tidyverse','cowsay')
+for(i in pg){
+  library(i,character.only = T)
+}
+```
+
+
 ---
 \begin{center}
 \textbf{Relax, programming is cool!}
-\end{center} If you doubt me, please kindly ask Hadley Wickham, the Chief data scientist at R studio.
+\end{center}
+
+If you doubt me, please kindly ask Hadley Wickham, the Chief data scientist at R studio.
 
 # R for Data Science
 
@@ -425,7 +438,7 @@ H <- solve(B)
 H
 
 # Did you encounter a problem?
-Be of good cheer; for I have overcome the world!- Jesus Christ in  Joh 16:33
+Be of good cheer; for I have overcome the world!- Jesus Christ in  John 16:33
 
 
 # Inverse function to tackle the problem
@@ -519,4 +532,3 @@ y = B[2,1]; y
 \bibitem {P} 
 Wickham, H., \& Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. " O'Reilly Media, Inc.".
 \end{thebibliography}
-
