@@ -5,7 +5,7 @@ author: "Ogundepo Ezekiel Adebayo"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   beamer_presentation:
-    keep_tex: true
+  # keep_tex: true
   # toc: true
   # theme: 'AnnArbor'
     theme: 'Copenhagen'
@@ -36,7 +36,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r library, include=F}
-pg=c('tidyverse','cowsay')
+pg=c('tidyverse')
 for(i in pg){
   library(i,character.only = T)
 }
@@ -57,19 +57,19 @@ reading a single book \cite{P}.
 
 # What you will learn
 
-![Program ~ Inspired by Hadley Wickham \cite{P}](C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/Capture.JPG)
+![Program ~ Inspired by Hadley Wickham \cite{P}](Images/Capture.JPG)
 
 ## R and R Studio
 R is a statistical programming language for data analysis and visualization while R Studio is an integrated development environment (IDE) for R programming. R Studio makes programming easier in R.
 
 # R worth it 
-![R worth it](C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/r_ladies.JPG)
+![R worth it](Images/r_ladies.JPG)
 
 # Introduction to R
 In this chapter, you will take your first steps with R. You will learn how to use the console as a calculator and how to assign variables. You will also get to know the basic data types in R. Let's get started!
 
 # Welcome to R programming
-![R interface](C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/R_studio.jpg)
+![R interface](Images/R_studio.jpg)
 
 # R as a calculator
 In its most basic form, R can be used as a simple calculator.
@@ -175,7 +175,7 @@ The best naming convention is to choose a variable name that will tell the reade
 
 * All variables must begin with a letter of the alphabet.
 * After the initial letter, variable names can also contain (_ or .) and numbers. No spaces or special characters, however are allowed.
-* Uppercase characters are distinct from lowercase characters (in R and also in Python)
+* Uppercase characters are different from lowercase characters (in R and also in Python)
 
 ```{r, echo=F}
 sample=tibble::tribble(
@@ -231,7 +231,7 @@ character.vector <- c('Bosco', 'Lucie', 'John', 'Agness', 'Marc')
 Adding a space behind the commas in the \textbf{c()} function improves the readability of your code
 
 ## Naming a vector
-As a data analyst, it is important to have a clear view on the dat that you are using. Understanding what each element refers to is essential. You can give  a name to the elements of a vector with the \textbf{names ()} function
+As a data analyst, it is important to have a clear view on the data that you are using. Understanding what each element refers to is essential. You can give  a name to the elements of a vector with the \textbf{names ()} function
 
 # Create a vector 
 ## Example
