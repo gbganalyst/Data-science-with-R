@@ -1,6 +1,6 @@
 ---
 title: "Data Science with R"
-subtitle: "A continuous training session"
+#subtitle: "A continuous training session"
 author: "Ogundepo Ezekiel Adebayo" 
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -237,7 +237,7 @@ As a data analyst, it is important to have a clear view on the data that you are
 ## Example
 
 ```{r, echo=T}
-sales_tax <- c(140000, 200000, 600000, 180000, 170000 )
+sales_tax <- c(140000, 200000, 600000, 180000, 170000)
 names(sales_tax) <- c('Monday','Tuesday','Wednessday',
                       'Thursday','Friday')
 sales_tax
@@ -414,6 +414,22 @@ F <- A  %*%  B; F
 
 # Arithmetic Operation
 
+* Transpose
+
+\begin{align*}
+G=t(A)=\begin{pmatrix}
+1&7&13\\
+3&9&15\\
+5&11&17
+\end{pmatrix}\end{align*}
+
+```{r,echo=T, eval=T}
+G <- t(A); G
+```
+
+
+# Arithmetic Operation
+
 * Determinant
 
 \begin{align*}
@@ -526,6 +542,161 @@ B
 x = B[1,1]; x
 y = B[2,1]; y
 ```
+
+
+# Eigenvalues and Eigenvectors
+
+Consider the following matrix 
+
+\begin{align*}
+B = \begin{pmatrix}
+1 & -6\\
+3 &   -8
+\end{pmatrix}\end{align*}
+
+1. Determine the eigenvalues of $B$
+2. Determine the eigenvectors corresponding to each eigenvalue of $B$
+
+## Solution
+
+```{r,echo=T, eval=T}
+B <- matrix(c(1,-6, 3, -8), nrow = 2, ncol = 2, byrow = TRUE)
+print(B) # To see the matrix
+```
+
+# Eigenvalues and Eigenvectors
+
+The function for calculating `eigenvalues` is `eigen()`. Note the function `eigen()` will produce a list as results. You will soon know what a `list()` is in the next chapter of this book.
+
+```{r,echo=T, eval=T}
+eigen(B)
+```
+
+# Short group work
+
+Consider the following matrix 
+
+\begin{align*}
+B = \begin{pmatrix}
+4 & 5& -5\\
+0 & 4& 1\\
+0 & 1& 2
+\end{pmatrix}\end{align*}
+
+1. Determine the eigenvalues of $B$
+2. Determine the eigenvectors corresponding to each eigenvalue of $B$
+
+# Dataframe
+
+Dataframes are another way to put data in tables! Unlike matrices, dataframes can have different types of data!
+
+A dataframe has the variables of a data set as `columns` and the observations as `rows`. This will be a familiar concept for those coming from different statistical software packages such as `Excel`, `SPSS`, or `STATA`
+
+The function for dataframe is `data.frame()`.
+
+# Example
+
+```{r, echo=T, eval=T}
+# Make a dataframe with columns named a and b
+data.frame(a = 2:4, b = 5:7)
+```
+
+The numbers `1 2 3` at the left on your `console` are `row` labels and are not a `column` of the dataframe
+
+Each column in a dataframe is a vector!
+
+# Dataframe
+
+## Example
+a= c(6, 5, 1)
+
+b= c(1, 1, 3)
+
+data=data.frame(a,b) `#` The output is
+
+data
+
+
+## Group work
+
+Create a dataframe and call it `data` for the following vectors:
+
+```{r, echo=T}
+height <- floor(rnorm(n=100,mean = 135, sd=12))
+weight <- ceiling(rnorm(n=100, mean = 55, sd=9))
+```
+
+# Quick, have a look at your dataset
+
+Working with large datasets is common in data science. When you work with (extremely) large datasets and dataframes, your first task as a data analyst  is to develop a clear understanding of its structure and main elements. Therefore, it is often useful to show only part of the entire dataset.
+
+1. `head()`: enables you to show the first observations of a dataframe.
+
+2. `tail()`: enables you to print out the last observations in your dataset.
+
+Both `head()` and `tail()` print a top line called `header`, which contains the names of the different variables in your data set.
+
+# Have a look at the structure
+
+Another method that is often used to get a rapid overview of your dataset is the function `str()`. 
+
+3. `str()`: Shows you the structure of your dataset 
+
+The structure of a dataframe tells you :
+
+1. The total number of observations
+2. The total number of variables
+3. A full list of the variables names
+4. The first observations
+
+## Note
+
+Applying the `str()` function will often be the first thing that you do when receiving a new dataset or dataframe. It is a great way to get more insight in your dataset before diving into the real analysis.
+
+# Example
+
+Considering these vectors:
+```{r, echo=T}
+height <- floor(rnorm(n=120,mean = 135, sd=12))
+weight <- ceiling(rnorm(n=120, mean = 55, sd=9))
+```
+
+Create a `dataframe` for it.
+
+```{r, echo=T}
+data <- data.frame(height, weight)
+```
+```{r, echo=T}
+str(data)
+```
+
+# Example
+```{r, echo=T}
+head(data, 5)
+tail(data,3)
+```
+
+# Using built-in datasets in R
+
+There are several ways to find the included datasets in R.
+
+Using `data()` will give you a list of the datasets of all loaded packages.
+
+## Example
+`#` This shows the library in which datasets are stored.
+
+data()  
+
+## Example
+
+library(datasets)
+
+data <- airquality
+
+str(data)
+
+To get help in the proper description of the dataset `?airquality`
+
 
 # References
 \begin{thebibliography}{99}
