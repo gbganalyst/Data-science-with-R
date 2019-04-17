@@ -1,6 +1,6 @@
 ---
 title: "Data Science with R"
-#subtitle: "A continuous training session"
+subtitle: "A continuous training session"
 author: "Ogundepo Ezekiel Adebayo" 
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
@@ -314,11 +314,11 @@ rep(1:4, c(4,1,8,2))
 ```
 
 # Assignment 1
-![Assignment 1](C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/assignment_Capture.JPG)
+![Assignment 1](Images/assignment_Capture.JPG)
 
 # Some fun- Using R to print out the Body Mass Index
 
-![BMI Function](C:/Users/ogund/Desktop/RR/Datascience_with_R/Images/BMI_Function.JPG)
+![BMI Function](Images/BMI_Function.JPG)
 
 # Matrices
 In R, a matrix is a collection of elements of the same data type (numeric, character, or logical) arranged into a fixed number of rows and columns.
