@@ -1,7 +1,7 @@
 ---
 title: "Data Science with R"
-subtitle: "A continuous training session"
-author: "Ogundepo Ezekiel Adebayo" 
+#subtitle: "A continuous training session"
+author: "Ibadan R users" 
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   beamer_presentation:
@@ -32,7 +32,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, tidy = "styler")
 ```
 
 ```{r library, include=F}
@@ -69,9 +69,11 @@ R is a statistical programming language for data analysis and visualization whil
 In this chapter, you will take your first steps with R. You will learn how to use the console as a calculator and how to assign variables. You will also get to know the basic data types in R. Let's get started!
 
 # Welcome to R programming
-![R interface](Images/R_studio.jpg)
+
+![](Images/R_studio.jpg)
 
 # R as a calculator
+
 In its most basic form, R can be used as a simple calculator.
 Consider the following arithmetic operations:
 
@@ -177,15 +179,19 @@ The best naming convention is to choose a variable name that will tell the reade
 * After the initial letter, variable names can also contain (_ or .) and numbers. No spaces or special characters, however are allowed.
 * Uppercase characters are different from lowercase characters (in R and also in Python)
 
-```{r, echo=F}
-sample=tibble::tribble(
-  ~`Samples of acceptable variable names`,~`Samples of acceptable variable names`,
-'Grade', 'Grade(Test)',
-'GradeOnTest', 'GradeTest#1',
-'Gaudence_Uwimana','Gaudence Uwimana',
-'sales_annex_2017','2017sales_annex')
+```{r, echo=F, eval=F}
 
+sample <- tibble::tribble(
+  ~`Samples of acceptable variable names`, ~`Samples of acceptable variable names`,
+  "Grade", "Grade(Test)",
+  "GradeOnTest", "GradeTest#1",
+  "Ibadan_R_users", "Ibadan R users",
+  "sales_price_2017", "2017sales_price"
+)
+
+sample %>% kableExtra::kable()
 ```
+
 ## Example 
 
 \begin{table}[ht]
@@ -196,8 +202,8 @@ sample=tibble::tribble(
   \hline
 1 & Grade & Grade(Test) \\ 
   2 & GradeOnTest & GradeTest\#1 \\ 
-  3 & Gaudence\_Uwimana & Gaudence Uwimana \\ 
-  4 & sales\_annex\_2017 & 2017sales\_annex \\ 
+  3 & Ibadan\_R\_users & Ibadan R users \\ 
+  4 & sales\_price\_2017 & 2017sales\_price \\ 
    \hline
 \end{tabular}
 \end{table}
@@ -225,7 +231,7 @@ Vectors are one-dimensional arrays that can hold numeric data, character data, o
 ## For example
 numeric_vector <- c(1, 2, 3, 6, 7, 10) 
 
-character.vector <- c('Bosco', 'Lucie', 'John', 'Agness', 'Marc')
+character.vector <- c('Chidinma', 'Emmanuel', 'Abono', 'Adesanya', 'Ebun')
 
 ## Notice
 Adding a space behind the commas in the \textbf{c()} function improves the readability of your code
@@ -234,6 +240,7 @@ Adding a space behind the commas in the \textbf{c()} function improves the reada
 As a data analyst, it is important to have a clear view on the data that you are using. Understanding what each element refers to is essential. You can give  a name to the elements of a vector with the \textbf{names ()} function
 
 # Create a vector 
+
 ## Example
 
 ```{r, echo=T}
