@@ -1,6 +1,7 @@
 # Load packages and data
 library(tidyverse)
 library(reshape2)
+
 jobs_gender <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-03-05/jobs_gender.csv")
 
 # Prepare data

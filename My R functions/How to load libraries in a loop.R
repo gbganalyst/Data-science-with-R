@@ -1,6 +1,10 @@
+
 # How to load packages in a loop
 
-if (!require(xfun)){install.packages('xfun')}
+if (!require(xfun)){
+  install.packages('xfun')
+  }
+
 xfun::pkg_attach(c('ggplot2','dplyr','lubridate','DT'),install = T)
 
 # Another method
@@ -8,6 +12,7 @@ xfun::pkg_attach(c('ggplot2','dplyr','lubridate','DT'),install = T)
 if (!require('install.load')){
   install.packages('install.load')
   }
+
 install.load::install_load(c('ggplot2','dplyr','lubridate','DT'))
 
 # Another method

@@ -24,3 +24,5 @@ View(df)
 # Method 3 works but i have a case here where it will not work
 data=dir(full.names = T) %>% map_df(read_csv)
 View(data)
+
+# https://www.r-bloggers.com/import-excel-sheets-with-r/

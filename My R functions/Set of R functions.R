@@ -3,7 +3,7 @@
 
 if (!require('install.load')){
   install.packages('install.load')
-}; library(install.load)
+} library(install.load)
 
 install_load('tidyverse')
 
@@ -147,14 +147,16 @@ skewness(c(1, 2, 5, 3))
 
 
 # Function that calculates age
-age=function(year,month, day){
-  year=readline('What year were you born: ')
-  month=readline('What month were you born: ')
-  day=readline('What day of the week were you born: ')
-  birth=make_date(year,month,day)
-  age=floor(as.duration(today()-birth)/dyears(1))
+age <- function(year, month, day) {
+  year <- readline("What year were you born: ")
+  month <- readline("What month were you born: ")
+  day <- readline("What day of the week were you born: ")
+  birth <- make_date(year, month, day)
+  age <- floor(as.numeric(as.duration(today() - birth), "year"))
 }
-cat('Your age is', age(year,month,day))
+cat("Your age is", age(year, month, day))
+
+# https://www.r-bloggers.com/practice-using-lubridate-theatrically/
 
 
 # List of some function in purrr package for data simulations
