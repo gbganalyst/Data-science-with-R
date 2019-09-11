@@ -1,5 +1,7 @@
 # Part 1
 
+# Method 1
+
 # You can download an entire repository from GitHub using R by installing the package usethis:
   
 #  install.packages('usethis')
@@ -11,6 +13,10 @@
 usethis::use_course('https://github.com/cwickham/purrr-tutorial/archive/master.zip')
 
 # You then follow the prompt question from R about where to save the file.
+
+# Method 2
+
+download.file(url = 'https://github.com/cwickham/purrr-tutorial/archive/master.zip', destfile = "purrr-tutorial.zip")
 
 # Part 2
 
