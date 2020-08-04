@@ -4,5 +4,6 @@ library(tidyverse)
 
 count_na <- function(dataframe) {
   count <- dataframe %>% is.na() %>% as_tibble() %>% mutate_all(as.numeric) %>% summarise_all(sum) %>% t()
+  colnames(count) = "Number of missing values"
   return(count)
 }

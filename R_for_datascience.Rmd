@@ -1,12 +1,11 @@
 ---
 title: "Data Science with R"
-#subtitle: "A continuous training session"
-author: "Ibadan R users" 
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+author: "Mrs Oresanya Adeyinka" 
+date: "September 28, 2019"
 output: 
   beamer_presentation:
-  # keep_tex: true
-  # toc: true
+    keep_tex: true
+    toc: true
   # theme: 'AnnArbor'
     theme: 'Copenhagen'
     colortheme: 'dolphin'
@@ -45,10 +44,10 @@ for(i in pg){
 
 ---
 \begin{center}
-\textbf{Relax, programming is cool!}
+\textbf{Relax, programming in R is cool!}
 \end{center}
 
-If you doubt me, please kindly ask Hadley Wickham, the Chief data scientist at R studio.
+If you doubt me, please kindly ask Hadley Wickham, Ezekiel ([\@gbganalyst](https://twitter.com/gbganalyst)) and Obisesan (\@obadairo1).
 
 # R for Data Science
 
@@ -63,10 +62,11 @@ reading a single book \cite{P}.
 R is a statistical programming language for data analysis and visualization while R Studio is an integrated development environment (IDE) for R programming. R Studio makes programming easier in R.
 
 # R worth it 
+
 ![R worth it](Images/r_ladies.JPG)
 
 # Introduction to R
-In this chapter, you will take your first steps with R. You will learn how to use the console as a calculator and how to assign variables. You will also get to know the basic data types in R. Let's get started!
+In this section, you will take your first steps with R. You will learn how to use the console as a calculator and how to assign variables. You will also get to know the basic data types in R. Let's get started!
 
 # Welcome to R programming
 
@@ -135,12 +135,12 @@ Calculate $(\sqrt{4})^2$
 ```
 
 
-#Comment in R
+# Comment in R
 
 R makes use of the # sign to add comments, so that you and others can understand what the R code is about. Just like Twitter! Comments are not run as R code, so they will not influence your result. For example, any code like $\#3 + 4$ at the console is a comment. R ignores any  code in #, this means that the code will not run.
 
 ```{r, echo=TRUE}
-#3+4
+# 3+4
 ```
 
 # Variable assignment 
@@ -162,7 +162,7 @@ ezekiel
 # Variable assignment and data types in R
 
 ```{r,echo=TRUE}
-x=3;y=4;z=10
+x=3; y=4; z=10
 
 x+y
 z-x-y
@@ -236,7 +236,7 @@ character.vector <- c('Chidinma', 'Emmanuel', 'Abono', 'Adesanya', 'Ebun')
 ## Notice
 Adding a space behind the commas in the \textbf{c()} function improves the readability of your code
 
-## Naming a vector
+# Naming a vector
 As a data analyst, it is important to have a clear view on the data that you are using. Understanding what each element refers to is essential. You can give  a name to the elements of a vector with the \textbf{names ()} function
 
 # Create a vector 
@@ -313,15 +313,15 @@ rep(1:4, each=3) # Each element of 1 to 4 3 times
 ```
 
 # Short group work
-## Tell what the following line of codes is or are doing
+## Tell us what the following line of codes is or are doing
 ```{r, echo=T, eval=F}
 rep(1:4, each=3, time=2)
 rep(1:4, 1:4)
 rep(1:4, c(4,1,8,2))
 ```
 
-# Assignment 1
-![Assignment 1](Images/assignment_Capture.JPG)
+# Group work
+![Group work](Images/assignment_Capture.JPG)
 
 # Some fun- Using R to print out the Body Mass Index
 
@@ -349,8 +349,10 @@ Construct a matrix with 3 rows containing the numbers 1 up to 9 filled \textbf{c
 
 # Progressing from vector to matrix
 ```{r,echo=T, eval=T}
-fiscal_year2016_17 <- c(140, 134)     
+fiscal_year2016_17 <- c(140, 134)  
+
 fiscal_year2017_18 <- c(160, 158)  
+
 performance_analysis <- matrix(c(fiscal_year2016_17,
                         fiscal_year2017_18),nrow = 2, 
                         ncol = 2,byrow = T)
@@ -367,7 +369,9 @@ To help you understand what is stored in the performance analysis matrix, it is 
 rownames(performance_analysis) <-
   c('Fiscal year July-June 2016/17',
    'Fiscal year July-June 2017/18')
+
 colnames(performance_analysis) <- c('Actual', 'Target')
+
 performance_analysis
 ```
 
@@ -376,12 +380,16 @@ performance_analysis
 
 ```{r, echo=T, eval=T}
 A <- matrix(c(1, 3, 5, 7, 9, 11, 13, 15, 17), ncol = 3, 
-            byrow = F); A
+            byrow = F)
+A
 ```
+
+#
 
 ```{r,echo=T, eval=T}
 B <- matrix(c(2,4,6,8,10,12,14,16,18), ncol = 3, 
-            byrow = F); B
+            byrow = F)
+B
 ```
 
 # Matrices selection
@@ -564,16 +572,17 @@ B = \begin{pmatrix}
 1. Determine the eigenvalues of $B$
 2. Determine the eigenvectors corresponding to each eigenvalue of $B$
 
-## Solution
+# Solution
 
 ```{r,echo=T, eval=T}
-B <- matrix(c(1,-6, 3, -8), nrow = 2, ncol = 2, byrow = TRUE)
+B <- matrix(c(1,-6, 3, -8), nrow = 2, ncol = 2, 
+            byrow = TRUE)
 print(B) # To see the matrix
 ```
 
 # Eigenvalues and Eigenvectors
 
-The function for calculating `eigenvalues` is `eigen()`. Note the function `eigen()` will produce a list as results. You will soon know what a `list()` is in the next chapter of this book.
+The function for calculating `eigenvalues` is `eigen()`. Note the function `eigen()` will produce a list as results. You will soon know what a `list()` is in the next next section.
 
 ```{r,echo=T, eval=T}
 eigen(B)
@@ -615,13 +624,13 @@ Each column in a dataframe is a vector!
 # Dataframe
 
 ## Example
-a= c(6, 5, 1)
+a <-  c(6, 5, 1)
 
-b= c(1, 1, 3)
+b <-  c(1, 1, 3)
 
-data=data.frame(a,b) `#` The output is
+data <- data.frame(a, b) `#` The output is ?
 
-data
+
 
 
 ## Group work
@@ -629,8 +638,10 @@ data
 Create a dataframe and call it `data` for the following vectors:
 
 ```{r, echo=T}
-height <- floor(rnorm(n=100,mean = 135, sd=12))
-weight <- ceiling(rnorm(n=100, mean = 55, sd=9))
+# Set the same seed to get the same sample
+set.seed(123) 
+height <- rnorm(n=100,mean = 135, sd=12)
+weight <- rnorm(n=100, mean = 55, sd=9)
 ```
 
 # Quick, have a look at your dataset
@@ -690,7 +701,7 @@ There are several ways to find the included datasets in R.
 Using `data()` will give you a list of the datasets of all loaded packages.
 
 ## Example
-`#` This shows the library in which datasets are stored.
+`#` This shows all the R datasets in the package `datasets`.
 
 data()  
 
@@ -703,6 +714,11 @@ data <- airquality
 str(data)
 
 To get help in the proper description of the dataset `?airquality`
+
+# The end
+\begin{center}
+\textbf{Thank you!}
+\end{center}
 
 
 # References
